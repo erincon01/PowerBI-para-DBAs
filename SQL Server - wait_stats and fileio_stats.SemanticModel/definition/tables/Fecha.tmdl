@@ -1,0 +1,173 @@
+table Fecha
+	lineageTag: 7fccc01a-c91c-44e1-a16b-1638bb033991
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b0201f4-5657-4e16-9813-0bab362c50ab
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 5af10847-53b9-4709-80c0-5d00ccffc06d
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: fc155d75-2165-4161-a6bc-6ff7820fcce3
+		summarizeBy: sum
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name'
+		dataType: string
+		lineageTag: 0759be88-214d-4aca-9600-adae32b04739
+		summarizeBy: none
+		sourceColumn: Day Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		dataType: int64
+		formatString: 0
+		lineageTag: bd681f72-6854-4556-a745-878c7f2a14f7
+		summarizeBy: sum
+		sourceColumn: Day of Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5585ba1c-8747-4181-a422-1aae040ee044
+		summarizeBy: sum
+		sourceColumn: Day of Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: 9fd2c469-fc52-401f-8a81-a3245940a2bc
+		summarizeBy: none
+		sourceColumn: Month Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: f6f844ac-52aa-4a53-bfdb-b40f0bfe2894
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week of Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 30b451a0-621f-4169-9683-2d567fb28b02
+		summarizeBy: sum
+		sourceColumn: Week of Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week of Month'
+		dataType: int64
+		formatString: 0
+		lineageTag: 15bfcf70-77a6-41e0-bb3a-1244988650cd
+		summarizeBy: sum
+		sourceColumn: Week of Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of Week'
+		dataType: dateTime
+		formatString: dd/mm/yy
+		lineageTag: c94610cd-dbf6-41a1-8f2e-769b0b26b56b
+		summarizeBy: none
+		sourceColumn: Start of Week
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'End of Week'
+		dataType: dateTime
+		formatString: d/mm/yy
+		lineageTag: c1858e46-08ef-404f-a52f-ae7f9306f540
+		summarizeBy: none
+		sourceColumn: End of Week
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Year-Month
+		dataType: string
+		lineageTag: 648e1a30-fba8-4a26-9503-30dab96f2032
+		summarizeBy: none
+		sourceColumn: Year-Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Working-day
+		dataType: int64
+		formatString: 0
+		lineageTag: 11ed18e1-5102-4c17-b8f5-9117d48ecf30
+		summarizeBy: sum
+		sourceColumn: Working-day
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: dd/mm/yy
+		lineageTag: 769f9848-e046-4a36-a896-af5b8031e03f
+		summarizeBy: none
+		sourceColumn: date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition Fecha-c492eabb-8768-49b0-a81b-e131731aef91 = m
+		mode: import
+		source =
+				let
+				    Source = wait_stats,
+				    #"Appended Query" = Table.Combine({Source, file_stats}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Appended Query",{"TimeGenerated"}),
+				    #"Grouped Rows" = Table.Group(#"Removed Other Columns", {}, {{"max-ts", each List.Max([TimeGenerated]), type nullable datetime}, {"min-ts", each List.Min([TimeGenerated]), type nullable datetime}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Grouped Rows",{{"max-ts", type date}, {"min-ts", type date}}),
+				    #"Invoked Custom Function" = Table.AddColumn(#"Changed Type", "Calendario", each #"Funcion-Fecha"([#"min-ts"], [#"max-ts"])),
+				    #"Expanded Calendario" = Table.ExpandTableColumn(#"Invoked Custom Function", "Calendario", {"fecha", "Year", "Month", "Day", "Day Name", "Day of Week", "Day of Year", "Month Name", "Quarter", "Week of Year", "Week of Month", "Start of Week", "End of Week", "Year-Month", "Working-day"}, {"fecha", "Year", "Month", "Day", "Day Name", "Day of Week", "Day of Year", "Month Name", "Quarter", "Week of Year", "Week of Month", "Start of Week", "End of Week", "Year-Month", "Working-day"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Expanded Calendario",{"max-ts", "min-ts"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Removed Columns",{{"fecha", type date}, {"Year", Int64.Type}, {"Month", Int64.Type}, {"Day", Int64.Type}, {"Day of Week", Int64.Type}, {"Day Name", type text}, {"Day of Year", Int64.Type}, {"Month Name", type text}, {"Quarter", type text}, {"Week of Year", Int64.Type}, {"Week of Month", Int64.Type}, {"Start of Week", type date}, {"End of Week", type date}, {"Year-Month", type text}, {"Working-day", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"fecha", "date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

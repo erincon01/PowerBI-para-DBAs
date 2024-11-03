@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../SQL Server - wait_stats and fileio_stats.SemanticModel"
+    },
+    "byConnection": null
+  }
+}

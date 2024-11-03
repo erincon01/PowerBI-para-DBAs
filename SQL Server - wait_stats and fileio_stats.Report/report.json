@@ -1,0 +1,510 @@
+{
+  "config": "{\"version\":\"5.50\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY22SU03\",\"version\":\"5.34\",\"type\":2},\"customTheme\":{\"name\":\"Verne-blanco2197775527899315.json\",\"version\":\"5.42\",\"type\":1}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"filterSortOrder\":3,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"exportDataMode\":1,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "filters": "[]",
+  "layoutOptimization": 0,
+  "pods": [
+    {
+      "boundSection": "ReportSection205f34686f4700f38943",
+      "config": "{}",
+      "name": "Pod1"
+    },
+    {
+      "boundSection": "ReportSection4f2b44976aca3e322ba0",
+      "config": "{}",
+      "name": "Pod2",
+      "parameters": "[{\"name\":\"Param_Filterc6e59a8d6f195cb7ddee\",\"boundFilter\":\"Filterc6e59a8d6f195cb7ddee\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fecha\"}},\"Property\":\"date\"}}}]",
+      "type": 1
+    },
+    {
+      "boundSection": "ReportSection46d45e4590410cec9505",
+      "config": "{}",
+      "name": "Pod3",
+      "parameters": "[{\"name\":\"Param_Filter3be07bf1fa0c83ac3873\",\"boundFilter\":\"Filter3be07bf1fa0c83ac3873\",\"fieldExpr\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fecha\"}},\"Property\":\"date\"}}}]",
+      "type": 1
+    }
+  ],
+  "publicCustomVisuals": [
+    "AttributeSlicer1652434005853",
+    "ChicletSlicer1448559807354",
+    "SandDance201929976D117A654D0BAB8E96507442D80B"
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY22SU03",
+            "path": "BaseThemes/CY22SU03.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Verne-blanco2197775527899315.json",
+            "path": "Verne-blanco2197775527899315.json",
+            "type": 201
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"184L\"}}}}}],\"background\":[{\"properties\":{\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"''\"}}},\"url\":{\"expr\":{\"Literal\":{\"Value\":\"''\"}}}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"type\":0}",
+      "displayName": "Fileiostats summary by Client",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection205f34686f4700f38943",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"1ad86511a995ff2298af\",\"layouts\":[{\"id\":0,\"position\":{\"x\":777.5645756457565,\"y\":67.30627306273063,\"z\":6000,\"width\":502.140221402214,\"height\":247.08487084870848,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"lineClusteredColumnComboChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Fecha.date\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(file_stats.num_of_writes)\"}],\"Y2\":[{\"queryRef\":\"_Metrics.avg io_stall_write_ms\"}],\"Series\":[{\"queryRef\":\"file_stats.database_name\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fecha\",\"Type\":0},{\"Name\":\"f1\",\"Entity\":\"file_stats\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"},\"Name\":\"Fecha.date\",\"NativeReferenceName\":\"date\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"num_of_writes\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_of_writes)\",\"NativeReferenceName\":\"num_of_writes\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_write_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_write_ms\",\"NativeReferenceName\":\"avg io_stall_write_ms\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"database_name\"},\"Name\":\"file_stats.database_name\",\"NativeReferenceName\":\"database_name\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"file_stats\"}},\"Property\":\"num_of_reads\"}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 247.08,
+          "width": 502.14,
+          "x": 777.56,
+          "y": 67.31,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"304a87c71f99a1670f47\",\"layouts\":[{\"id\":0,\"position\":{\"x\":38.603491271820445,\"y\":314.214463840399,\"z\":0,\"width\":553.0174563591022,\"height\":40.399002493765586,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Number of operations (reads and writes) per day\",\"textStyle\":{\"fontSize\":\"12pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A58A4'\"}}}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 40.40,
+          "width": 553.02,
+          "x": 38.60,
+          "y": 314.21,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"418f8076917de07346c3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":38.96678966789668,\"y\":8.85608856088561,\"z\":1000,\"width\":552.619926199262,\"height\":58.45018450184502,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Filestats analysis - Summary by client\",\"textStyle\":{\"fontSize\":\"20pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A58A4'\"}}}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 58.45,
+          "width": 552.62,
+          "x": 38.97,
+          "y": 8.86,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"4ec2030902b1f2f6e67c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":38.96678966789668,\"y\":67.30627306273063,\"z\":3000,\"width\":292.2509225092251,\"height\":247.08487084870848,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"AttributeSlicer1652434005853\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(file_stats.num_of_reads)\"},{\"queryRef\":\"Sum(file_stats.num_of_writes)\"}],\"Category\":[{\"queryRef\":\"file_stats.database_name\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"file_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"database_name\"},\"Name\":\"file_stats.database_name\",\"NativeReferenceName\":\"database_name\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"num_of_reads\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_of_reads)\",\"NativeReferenceName\":\"num_of_reads\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"num_of_writes\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_of_writes)\",\"NativeReferenceName\":\"num_of_writes\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"num_of_reads\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"general\":[{\"properties\":{}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 247.08,
+          "width": 292.25,
+          "x": 38.97,
+          "y": 67.31,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"54785961428ff6ae39a4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":39,\"y\":360,\"z\":2000,\"width\":1241,\"height\":354,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"Fecha.date\",\"active\":true},{\"queryRef\":\"file_stats.database_name\",\"active\":true}],\"Values\":[{\"queryRef\":\"Sum(file_stats.num_of_reads)\"},{\"queryRef\":\"Sum(file_stats.num_of_writes)\"},{\"queryRef\":\"_Metrics.avg io_stall_reads_ms\"},{\"queryRef\":\"_Metrics.avg io_stall_write_ms\"},{\"queryRef\":\"Sum(file_stats.num_operations)\"},{\"queryRef\":\"_Metrics.avg io_stall_ms_per_request\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fecha\",\"Type\":0},{\"Name\":\"f1\",\"Entity\":\"file_stats\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"},\"Name\":\"Fecha.date\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"num_of_reads\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_of_reads)\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"num_of_writes\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_of_writes)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_reads_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_reads_ms\",\"NativeReferenceName\":\"avg io_stall_reads_ms\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_write_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_write_ms\",\"NativeReferenceName\":\"avg io_stall_write_ms\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"database_name\"},\"Name\":\"file_stats.database_name\",\"NativeReferenceName\":\"database_name\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"num_operations\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_operations)\",\"NativeReferenceName\":\"num_operations\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_ms_per_request\",\"NativeReferenceName\":\"avg io_stall_ms_per_request\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"}}}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"Fecha.date\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fecha\"}},\"Property\":\"date\"}}],\"isPinned\":true},{\"queryRefs\":[\"file_stats.database_name\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"datetime'2023-04-11T00:00:00'\"}}],\"isToggled\":true},{\"identityValues\":[{\"Literal\":{\"Value\":\"datetime'2023-04-12T00:00:00'\"}}],\"isToggled\":true},{\"identityValues\":[{\"Literal\":{\"Value\":\"datetime'2023-04-13T00:00:00'\"}}],\"isToggled\":true}]}}],\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"130.16242529571372D\"}}}},\"selector\":{\"data\":[{\"total\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fecha\"}},\"Property\":\"date\"}}]}]}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Scope\":[]}},\"Operator\":3}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Scope\":[]}},\"Operator\":3}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 354.00,
+          "width": 1241.00,
+          "x": 39.00,
+          "y": 360.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"b162ec7413da3f381e35\",\"layouts\":[{\"id\":0,\"position\":{\"x\":598.6715867158672,\"y\":8.85608856088561,\"z\":4000,\"width\":371.070110701107,\"height\":58.45018450184502,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"_Metrics.avg io_stall_reads_ms\"},{\"queryRef\":\"_Metrics.avg io_stall_write_ms\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_reads_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_reads_ms\",\"NativeReferenceName\":\"avg io_stall_reads_ms\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_write_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_write_ms\",\"NativeReferenceName\":\"avg io_stall_write_ms\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_reads_ms_per_request\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 58.45,
+          "width": 371.07,
+          "x": 598.67,
+          "y": 8.86,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"e8db6270bcc197724bc7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":338.30258302583024,\"y\":67.30627306273063,\"z\":5000,\"width\":439.2619926199262,\"height\":247.08487084870848,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"lineClusteredColumnComboChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Fecha.date\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(file_stats.num_of_reads)\"}],\"Y2\":[{\"queryRef\":\"_Metrics.avg io_stall_reads_ms\"}],\"Series\":[{\"queryRef\":\"file_stats.database_name\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fecha\",\"Type\":0},{\"Name\":\"f1\",\"Entity\":\"file_stats\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"},\"Name\":\"Fecha.date\",\"NativeReferenceName\":\"date\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"num_of_reads\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_of_reads)\",\"NativeReferenceName\":\"num_of_reads\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_reads_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_reads_ms\",\"NativeReferenceName\":\"avg io_stall_reads_ms\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"database_name\"},\"Name\":\"file_stats.database_name\",\"NativeReferenceName\":\"database_name\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"file_stats\"}},\"Property\":\"num_of_reads\"}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 247.08,
+          "width": 439.26,
+          "x": 338.30,
+          "y": 67.31,
+          "z": 5000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"relationships\":[{\"source\":\"b0dfa63005d7474c2f37\",\"target\":\"beb89bd9d299e92ca3e5\",\"type\":1},{\"source\":\"b0dfa63005d7474c2f37\",\"target\":\"7b885e73d2292d5646f2\",\"type\":1},{\"source\":\"b0dfa63005d7474c2f37\",\"target\":\"8372ce93099641366e4d\",\"type\":1},{\"source\":\"b0dfa63005d7474c2f37\",\"target\":\"13b635f7f33d3c1462c7\",\"type\":3},{\"source\":\"7b885e73d2292d5646f2\",\"target\":\"448c7e0a7433946157de\",\"type\":2},{\"source\":\"7b885e73d2292d5646f2\",\"target\":\"f189cbf75f01e4bb38f4\",\"type\":2},{\"source\":\"7b885e73d2292d5646f2\",\"target\":\"8372ce93099641366e4d\",\"type\":2},{\"source\":\"448c7e0a7433946157de\",\"target\":\"c240ec2a6976a2916e70\",\"type\":1},{\"source\":\"448c7e0a7433946157de\",\"target\":\"7b885e73d2292d5646f2\",\"type\":2}],\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"185L\"}}}}}],\"background\":[{\"properties\":{\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"''\"}}},\"url\":{\"expr\":{\"Literal\":{\"Value\":\"''\"}}}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"visibility\":1,\"type\":2}",
+      "displayName": "Wait statistics per Day",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"Filter3be07bf1fa0c83ac3873\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fecha\"}},\"Property\":\"date\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fecha\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"datetime'2024-09-11T00:00:00'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5}]",
+      "height": 720.00,
+      "name": "ReportSection46d45e4590410cec9505",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"13b635f7f33d3c1462c7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":34.53874538745387,\"y\":69.07749077490774,\"z\":8000,\"width\":230.25830258302582,\"height\":238.2287822878229,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"AttributeSlicer1652434005853\",\"projections\":{\"Category\":[{\"queryRef\":\"database_wait_stats.wait_type_category_s\"}],\"Values\":[{\"queryRef\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"wait_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_category_s\"},\"Name\":\"database_wait_stats.wait_type_category_s\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0},\"Name\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"general\":[{\"properties\":{}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 238.23,
+          "width": 230.26,
+          "x": 34.54,
+          "y": 69.08,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"289100c20d96367ef2b8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":35,\"y\":548,\"z\":15000,\"width\":230,\"height\":166,\"tabOrder\":15000}}],\"singleVisual\":{\"visualType\":\"ChicletSlicer1448559807354\",\"projections\":{\"Category\":[{\"queryRef\":\"Hora.15 Minutos\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"h\",\"Entity\":\"Hora\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"15 Minutos\"},\"Name\":\"Hora.15 Minutos\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"15 Minutos\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"'Horizontal'\"}}},\"columns\":{\"expr\":{\"Literal\":{\"Value\":\"2D\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 166.00,
+          "width": 230.00,
+          "x": 35.00,
+          "y": 548.00,
+          "z": 15000.00
+        },
+        {
+          "config": "{\"name\":\"3e453ed614a9ad0be2c2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":777,\"y\":307,\"z\":3000,\"width\":497,\"height\":40,\"tabOrder\":11000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Percent request and wait time per wait type category or wait type\",\"textStyle\":{\"fontSize\":\"12pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A58A4'\"}}}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 40.00,
+          "width": 497.00,
+          "x": 777.00,
+          "y": 307.00,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"448c7e0a7433946157de\",\"layouts\":[{\"id\":0,\"position\":{\"x\":273,\"y\":354,\"z\":12000,\"width\":495,\"height\":184,\"tabOrder\":12000}}],\"singleVisual\":{\"visualType\":\"treemap\",\"projections\":{\"Group\":[{\"queryRef\":\"database_wait_stats.wait_type_s\",\"active\":true}],\"Values\":[{\"queryRef\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"wait_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_s\"},\"Name\":\"database_wait_stats.wait_type_s\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0},\"Name\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"legend\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 184.00,
+          "width": 495.00,
+          "x": 273.00,
+          "y": 354.00,
+          "z": 12000.00
+        },
+        {
+          "config": "{\"name\":\"508ad6365aae69990395\",\"layouts\":[{\"id\":0,\"position\":{\"x\":35.42435424354244,\"y\":10.62730627306273,\"z\":4000,\"width\":64.64944649446494,\"height\":58.45018450184502,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 58.45,
+          "width": 64.65,
+          "x": 35.42,
+          "y": 10.63,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"78fb3fbde746d26b62c3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":778.450184501845,\"y\":10.62730627306273,\"z\":11000,\"width\":116.01476014760148,\"height\":58.45018450184502,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Min(Fecha.date)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fecha\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"}},\"Function\":3},\"Name\":\"Min(Fecha.date)\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"}},\"Function\":3}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"14D\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 58.45,
+          "width": 116.01,
+          "x": 778.45,
+          "y": 10.63,
+          "z": 11000.00
+        },
+        {
+          "config": "{\"name\":\"79c61532a4ce52ed33f3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":909.426433915212,\"y\":10.773067331670823,\"z\":14000,\"width\":230.72319201995012,\"height\":93.36658354114712,\"tabOrder\":14000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"database_wait_stats.wait_per_request\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"wait_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_per_request\"},\"Name\":\"database_wait_stats.wait_per_request\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Between'\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 93.37,
+          "width": 230.72,
+          "x": 909.43,
+          "y": 10.77,
+          "z": 14000.00
+        },
+        {
+          "config": "{\"name\":\"7b885e73d2292d5646f2\",\"layouts\":[{\"id\":0,\"position\":{\"x\":273,\"y\":69,\"z\":6000,\"width\":495,\"height\":238,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"hundredPercentStackedColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Hora.Horas\"},{\"queryRef\":\"Hora.30 Minutos\"},{\"queryRef\":\"Hora.15 Minutos\"},{\"queryRef\":\"Hora.10 Minutos\",\"active\":true}],\"Series\":[{\"queryRef\":\"database_wait_stats.wait_type_s\"}],\"Y\":[{\"queryRef\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"wait_stats\",\"Type\":0},{\"Name\":\"h\",\"Entity\":\"Hora\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_s\"},\"Name\":\"database_wait_stats.wait_type_s\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0},\"Name\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"Horas\"},\"Name\":\"Hora.Horas\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"30 Minutos\"},\"Name\":\"Hora.30 Minutos\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"10 Minutos\"},\"Name\":\"Hora.10 Minutos\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"15 Minutos\"},\"Name\":\"Hora.15 Minutos\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"Horas\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"enableValueDataLabel\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"enableDetailDataLabel\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"detailContentType\":{\"expr\":{\"Literal\":{\"Value\":\"'Percent of total'\"}}}}}],\"zoom\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"valueAxis\":[{\"properties\":{\"gridlineShow\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"categoryAxis\":[{\"properties\":{\"gridlineShow\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 238.00,
+          "width": 495.00,
+          "x": 273.00,
+          "y": 69.00,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"8372ce93099641366e4d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":778,\"y\":105,\"z\":5000,\"width\":496,\"height\":202,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"database_wait_stats.wait_type_s\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(database_wait_stats.wait_per_request)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"wait_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_s\"},\"Name\":\"database_wait_stats.wait_type_s\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_per_request\"}},\"Function\":1},\"Name\":\"Sum(database_wait_stats.wait_per_request)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_per_request\"}},\"Function\":1}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 202.00,
+          "width": 496.00,
+          "x": 778.00,
+          "y": 105.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"8ecf761ad65505632375\",\"layouts\":[{\"id\":0,\"position\":{\"x\":107.15867158671587,\"y\":10.62730627306273,\"z\":0,\"width\":340.0738007380074,\"height\":58.45018450184502,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Waitstats details by day\",\"textStyle\":{\"fontSize\":\"20pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A58A4'\"}}}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 58.45,
+          "width": 340.07,
+          "x": 107.16,
+          "y": 10.63,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"b0dfa63005d7474c2f37\",\"layouts\":[{\"id\":0,\"position\":{\"x\":35,\"y\":354,\"z\":10000,\"width\":230,\"height\":184,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"ChicletSlicer1448559807354\",\"projections\":{\"Category\":[{\"queryRef\":\"Hora.Horas\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"h\",\"Entity\":\"Hora\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"Horas\"},\"Name\":\"Hora.Horas\"}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"header\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"general\":[{\"properties\":{\"rows\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"columns\":{\"expr\":{\"Literal\":{\"Value\":\"4D\"}}},\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"'Horizontal'\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"h\",\"Entity\":\"Hora\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"Horas\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"10L\"}}],[{\"Literal\":{\"Value\":\"11L\"}}],[{\"Literal\":{\"Value\":\"12L\"}}],[{\"Literal\":{\"Value\":\"13L\"}}],[{\"Literal\":{\"Value\":\"14L\"}}],[{\"Literal\":{\"Value\":\"15L\"}}],[{\"Literal\":{\"Value\":\"16L\"}}],[{\"Literal\":{\"Value\":\"17L\"}}]]}}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 184.00,
+          "width": 230.00,
+          "x": 35.00,
+          "y": 354.00,
+          "z": 10000.00
+        },
+        {
+          "config": "{\"name\":\"beb89bd9d299e92ca3e5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":778,\"y\":354,\"z\":7000,\"width\":496,\"height\":360,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"database_wait_stats.wait_type_category_s\",\"active\":true},{\"queryRef\":\"database_wait_stats.wait_type_s\"}],\"Values\":[{\"queryRef\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)\"},{\"queryRef\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"wait_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_category_s\"},\"Name\":\"database_wait_stats.wait_type_category_s\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_s\"},\"Name\":\"database_wait_stats.wait_type_s\"},{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Scope\":[]}},\"Operator\":3},\"Name\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"},{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"Scope\":[]}},\"Operator\":3},\"Name\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Scope\":[{\"RoleRef\":{\"Role\":\"Columns\"}}]}},\"Operator\":3}}}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"database_wait_stats.wait_type_category_s\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_type_category_s\"}}],\"isPinned\":true},{\"queryRefs\":[\"database_wait_stats.wait_type_s\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null}}],\"drillFilterOtherVisuals\":true,\"objects\":{\"subTotals\":[{\"properties\":{\"rowSubtotals\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"columnSubtotals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"columnFormatting\":[{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"1L\"}}}},\"selector\":{\"metadata\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)\"}},{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"1L\"}}}},\"selector\":{\"metadata\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Scope\":[{\"RoleRef\":{\"Role\":\"Columns\"}}]}},\"Operator\":3}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"Scope\":[{\"RoleRef\":{\"Role\":\"Columns\"}}]}},\"Operator\":3}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 360.00,
+          "width": 496.00,
+          "x": 778.00,
+          "y": 354.00,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"c240ec2a6976a2916e70\",\"layouts\":[{\"id\":0,\"position\":{\"x\":457.859778597786,\"y\":10.62730627306273,\"z\":9000,\"width\":309.96309963099634,\"height\":58.45018450184502,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"_Metrics.Distinct_captures\"},{\"queryRef\":\"_Metrics.Records\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Records (waits)\"},\"Name\":\"_Metrics.Records\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_captures (waits)\"},\"Name\":\"_Metrics.Distinct_captures\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_captures (waits)\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 58.45,
+          "width": 309.96,
+          "x": 457.86,
+          "y": 10.63,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"dc7712fc69e73432cebe\",\"layouts\":[{\"id\":0,\"position\":{\"x\":272.76752767527677,\"y\":306.4206642066421,\"z\":2000,\"width\":495.05535055350555,\"height\":39.852398523985244,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Wait time and requests per wait type\",\"textStyle\":{\"fontSize\":\"12pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A58A4'\"}}}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 39.85,
+          "width": 495.06,
+          "x": 272.77,
+          "y": 306.42,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"f189cbf75f01e4bb38f4\",\"layouts\":[{\"id\":0,\"position\":{\"x\":277,\"y\":548,\"z\":13000,\"width\":491,\"height\":166,\"tabOrder\":13000}}],\"singleVisual\":{\"visualType\":\"treemap\",\"projections\":{\"Group\":[{\"queryRef\":\"database_wait_stats.wait_type_s\",\"active\":true}],\"Values\":[{\"queryRef\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"wait_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_s\"},\"Name\":\"database_wait_stats.wait_type_s\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0},\"Name\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 166.00,
+          "width": 491.00,
+          "x": 277.00,
+          "y": 548.00,
+          "z": 13000.00
+        },
+        {
+          "config": "{\"name\":\"f3545bef6226cb345f5d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":34.53874538745387,\"y\":306.4206642066421,\"z\":1000,\"width\":230.25830258302582,\"height\":39.852398523985244,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Hour and wait per req. filters\",\"textStyle\":{\"fontSize\":\"12pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A58A4'\"}}}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 39.85,
+          "width": 230.26,
+          "x": 34.54,
+          "y": 306.42,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"''\"}}},\"url\":{\"expr\":{\"Literal\":{\"Value\":\"''\"}}}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]}}",
+      "displayName": "Introduction",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection4a32386e754b2b40a26c",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"489568d4b44d01861879\",\"layouts\":[{\"id\":0,\"position\":{\"x\":26,\"y\":272,\"z\":1001,\"width\":724,\"height\":427,\"tabOrder\":1001}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"databases.LogicalServerName_s\"},{\"queryRef\":\"databases.database_name\"},{\"queryRef\":\"_Metrics.Count file_stats records\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"databases\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"database_name\"},\"Name\":\"databases.database_name\",\"NativeReferenceName\":\"database_name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LogicalServerName_s\"},\"Name\":\"databases.LogicalServerName_s\",\"NativeReferenceName\":\"LogicalServerName_s\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Count file_stats records\"},\"Name\":\"_Metrics.Count file_stats records\",\"NativeReferenceName\":\"Count file_stats records\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"LogicalServerName_s\"}}}]},\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 427.00,
+          "width": 724.00,
+          "x": 26.00,
+          "y": 272.00,
+          "z": 1001.00
+        },
+        {
+          "config": "{\"name\":\"be4763e8188337d3eaa9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":26,\"y\":159,\"z\":1003,\"width\":724,\"height\":106,\"tabOrder\":1003}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"_Metrics.Count servers\"},{\"queryRef\":\"_Metrics.Count databases\"},{\"queryRef\":\"_Metrics.Distinct_wait_type_categories\"},{\"queryRef\":\"_Metrics.Distinct_wait_types\"},{\"queryRef\":\"_Metrics.Distinct_captures\"},{\"queryRef\":\"_Metrics.Records\"},{\"queryRef\":\"_Metrics.Count file_stats records\"},{\"queryRef\":\"_Metrics.Count wait_stats_records records\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Records (waits)\"},\"Name\":\"_Metrics.Records\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_wait_types (waits)\"},\"Name\":\"_Metrics.Distinct_wait_types\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_captures (waits)\"},\"Name\":\"_Metrics.Distinct_captures\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_wait_type_categories (waits)\"},\"Name\":\"_Metrics.Distinct_wait_type_categories\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Count databases\"},\"Name\":\"_Metrics.Count databases\",\"NativeReferenceName\":\"Count databases\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Count servers\"},\"Name\":\"_Metrics.Count servers\",\"NativeReferenceName\":\"Count servers\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Count file_stats records\"},\"Name\":\"_Metrics.Count file_stats records\",\"NativeReferenceName\":\"Count file_stats records\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Count wait_stats_records records\"},\"Name\":\"_Metrics.Count wait_stats_records records\",\"NativeReferenceName\":\"Count wait_stats_records records\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Count servers\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 106.00,
+          "width": 724.00,
+          "x": 26.00,
+          "y": 159.00,
+          "z": 1003.00
+        },
+        {
+          "config": "{\"name\":\"bf805abc2bd462d1206e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":26,\"y\":72,\"z\":1004,\"width\":724,\"height\":77}}],\"singleVisual\":{\"visualType\":\"pageNavigator\",\"drillFilterOtherVisuals\":true},\"howCreated\":\"InsertVisualButton\"}",
+          "filters": "[]",
+          "height": 77.00,
+          "width": 724.00,
+          "x": 26.00,
+          "y": 72.00,
+          "z": 1004.00
+        },
+        {
+          "config": "{\"name\":\"fde463f07a6f049350ea\",\"layouts\":[{\"id\":0,\"position\":{\"x\":26,\"y\":8,\"z\":1000,\"width\":724,\"height\":59,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Waitstats Analysis - Summary by client\",\"textStyle\":{\"fontSize\":\"20pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A58A4'\"}}}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 59.00,
+          "width": 724.00,
+          "x": 26.00,
+          "y": 8.00,
+          "z": 1000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"''\"}}},\"url\":{\"expr\":{\"Literal\":{\"Value\":\"''\"}}}}}}}]},\"type\":2}",
+      "displayName": "Fileiostats per Day",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"Filterc6e59a8d6f195cb7ddee\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fecha\"}},\"Property\":\"date\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fecha\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"datetime'2023-04-13T00:00:00'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":5,\"objects\":{}}]",
+      "height": 720.00,
+      "name": "ReportSection4f2b44976aca3e322ba0",
+      "ordinal": 4,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"02b415c5b7a5adccde7c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":35.01246882793017,\"y\":425.5361596009975,\"z\":0,\"width\":1236.2094763092268,\"height\":276.5087281795511}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"file_stats.database_name\"},{\"queryRef\":\"file_stats.filename\"},{\"queryRef\":\"Sum(file_stats.num_of_reads)\"},{\"queryRef\":\"Sum(file_stats.num_of_writes)\"},{\"queryRef\":\"Sum(file_stats.num_gb_read)\"},{\"queryRef\":\"Sum(file_stats.num_gb_written)\"},{\"queryRef\":\"_Metrics.avg io_stall_reads_ms\"},{\"queryRef\":\"_Metrics.avg io_stall_write_ms\"},{\"queryRef\":\"Hora.1 Hora\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"file_stats\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0},{\"Name\":\"h\",\"Entity\":\"Hora\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"database_name\"},\"Name\":\"file_stats.database_name\",\"NativeReferenceName\":\"database_name\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"filename\"},\"Name\":\"file_stats.filename\",\"NativeReferenceName\":\"filename\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"num_of_reads\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_of_reads)\",\"NativeReferenceName\":\"num_of_reads\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"num_of_writes\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_of_writes)\",\"NativeReferenceName\":\"num_of_writes\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_reads_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_reads_ms\",\"NativeReferenceName\":\"avg io_stall_reads_ms\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_write_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_write_ms\",\"NativeReferenceName\":\"avg io_stall_write_ms\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"1 Hora\"},\"Name\":\"Hora.1 Hora\",\"NativeReferenceName\":\"1 Hora\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"num_gb_read\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_gb_read)\",\"NativeReferenceName\":\"num_gb_read\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"num_gb_written\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_gb_written)\",\"NativeReferenceName\":\"num_gb_written\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"1 Hora\"}}}]},\"drillFilterOtherVisuals\":true,\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 276.51,
+          "width": 1236.21,
+          "x": 35.01,
+          "y": 425.54,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"06d9eabca296d8e73c8c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":35.42435424354244,\"y\":194.83394833948338,\"z\":6000,\"width\":196.60516605166052,\"height\":111.58671586715867}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"file_stats.database_name\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"file_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"database_name\"},\"Name\":\"file_stats.database_name\",\"NativeReferenceName\":\"database_name\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 111.59,
+          "width": 196.61,
+          "x": 35.42,
+          "y": 194.83,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"10ac100281d1867c4d87\",\"layouts\":[{\"id\":0,\"position\":{\"x\":697.859778597786,\"y\":13.284132841328413,\"z\":4000,\"width\":439.2619926199262,\"height\":247.08487084870848}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Hora.Horas\",\"active\":true},{\"queryRef\":\"Hora.30 Minutos\"},{\"queryRef\":\"Hora.15 Minutos\"},{\"queryRef\":\"Hora.10 Minutos\"}],\"Y\":[{\"queryRef\":\"Sum(file_stats.num_gb_read)\"},{\"queryRef\":\"Sum(file_stats.num_gb_written)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"h\",\"Entity\":\"Hora\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"file_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"Horas\"},\"Name\":\"Hora.Horas\",\"NativeReferenceName\":\"Horas\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"30 Minutos\"},\"Name\":\"Hora.30 Minutos\",\"NativeReferenceName\":\"30 Minutos\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"15 Minutos\"},\"Name\":\"Hora.15 Minutos\",\"NativeReferenceName\":\"15 Minutos\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"10 Minutos\"},\"Name\":\"Hora.10 Minutos\",\"NativeReferenceName\":\"10 Minutos\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"num_gb_read\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_gb_read)\",\"NativeReferenceName\":\"num_gb_read\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"num_gb_written\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_gb_written)\",\"NativeReferenceName\":\"num_gb_written\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"Horas\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"legend\":[{\"properties\":{\"showGradientLegend\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"file_stats\"}},\"Property\":\"num_of_reads\"}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 247.08,
+          "width": 439.26,
+          "x": 697.86,
+          "y": 13.28,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"385ec8a9b3c0217aa511\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"width\":100,\"height\":40,\"z\":1000}}],\"singleVisual\":{\"visualType\":\"actionButton\",\"drillFilterOtherVisuals\":true,\"objects\":{\"icon\":[{\"properties\":{\"shapeType\":{\"expr\":{\"Literal\":{\"Value\":\"'back'\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"visualLink\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"type\":{\"expr\":{\"Literal\":{\"Value\":\"'Back'\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 40.00,
+          "width": 100.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"57c2e689178a6f55157d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":35.42435424354244,\"y\":39.852398523985244,\"z\":3000,\"width\":196.60516605166052,\"height\":138.1549815498155}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Hora. Periodo\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"h\",\"Entity\":\"Hora\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\" Periodo\"},\"Name\":\"Hora. Periodo\",\"NativeReferenceName\":\" Periodo\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 138.15,
+          "width": 196.61,
+          "x": 35.42,
+          "y": 39.85,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"9663d283fc928c64e74d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":232.02952029520284,\"y\":13.284132841328413,\"z\":2000,\"width\":439.2619926199262,\"height\":247.08487084870848}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Hora.Horas\",\"active\":true},{\"queryRef\":\"Hora.30 Minutos\"},{\"queryRef\":\"Hora.15 Minutos\"},{\"queryRef\":\"Hora.10 Minutos\"}],\"Y\":[{\"queryRef\":\"Sum(file_stats.num_of_reads)\"},{\"queryRef\":\"Sum(file_stats.num_of_writes)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"h\",\"Entity\":\"Hora\",\"Type\":0},{\"Name\":\"f1\",\"Entity\":\"file_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"Horas\"},\"Name\":\"Hora.Horas\",\"NativeReferenceName\":\"Horas\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"30 Minutos\"},\"Name\":\"Hora.30 Minutos\",\"NativeReferenceName\":\"30 Minutos\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"15 Minutos\"},\"Name\":\"Hora.15 Minutos\",\"NativeReferenceName\":\"15 Minutos\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"10 Minutos\"},\"Name\":\"Hora.10 Minutos\",\"NativeReferenceName\":\"10 Minutos\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"num_of_reads\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_of_reads)\",\"NativeReferenceName\":\"num_of_reads\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"num_of_writes\"}},\"Function\":0},\"Name\":\"Sum(file_stats.num_of_writes)\",\"NativeReferenceName\":\"num_of_writes\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"Horas\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"legend\":[{\"properties\":{\"showGradientLegend\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"file_stats\"}},\"Property\":\"num_of_reads\"}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 247.08,
+          "width": 439.26,
+          "x": 232.03,
+          "y": 13.28,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"e63a1a24d46bbee2f5f0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":232.02952029520296,\"y\":259.48339483394835,\"z\":5000,\"width\":1047.6752767527676,\"height\":149.6678966789668}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Hora.5 Minutos\",\"active\":true}],\"Y\":[{\"queryRef\":\"_Metrics.avg io_stall_reads_ms\"},{\"queryRef\":\"_Metrics.avg io_stall_write_ms\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"h\",\"Entity\":\"Hora\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_reads_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_reads_ms\",\"NativeReferenceName\":\"avg io_stall_reads_ms\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"avg io_stall_write_ms_per_request\"},\"Name\":\"_Metrics.avg io_stall_write_ms\",\"NativeReferenceName\":\"avg io_stall_write_ms\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"5 Minutos\"},\"Name\":\"Hora.5 Minutos\",\"NativeReferenceName\":\"5 Minutos\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"h\"}},\"Property\":\"5 Minutos\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 149.67,
+          "width": 1047.68,
+          "x": 232.03,
+          "y": 259.48,
+          "z": 5000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"relationships\":[{\"source\":\"c19db2eb3eb1a110aca3\",\"target\":\"e25e0faf9c260262ada5\",\"type\":1}],\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"184L\"}}}}}],\"background\":[{\"properties\":{\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"''\"}}},\"url\":{\"expr\":{\"Literal\":{\"Value\":\"''\"}}}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"type\":0}",
+      "displayName": "Waitstats summary by Client",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "ReportSection8b629210fe6a721c08a5",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0fb55c7e230be4d6f519\",\"layouts\":[{\"id\":0,\"position\":{\"x\":38.603491271820445,\"y\":8.977556109725686,\"z\":750,\"width\":617.6558603491271,\"height\":58.35411471321696,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Waitstats analysis - Summary by client\",\"textStyle\":{\"fontSize\":\"20pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A58A4'\"}}}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 58.35,
+          "width": 617.66,
+          "x": 38.60,
+          "y": 8.98,
+          "z": 750.00
+        },
+        {
+          "config": "{\"name\":\"2ba0afda6a8f237ef06c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":665.0922509225093,\"y\":314.39114391143914,\"z\":500,\"width\":608.4132841328413,\"height\":39.852398523985244,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Percent wait time wait type category and wait type / day\",\"textStyle\":{\"fontSize\":\"12pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A58A4'\"}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 39.85,
+          "width": 608.41,
+          "x": 665.09,
+          "y": 314.39,
+          "z": 500.00
+        },
+        {
+          "config": "{\"name\":\"2febcbe6159dcf056eef\",\"layouts\":[{\"id\":0,\"position\":{\"x\":665.0922509225093,\"y\":74.39114391143912,\"z\":4000,\"width\":608.4132841328413,\"height\":231.1439114391144,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"database_wait_stats.wait_type_s\"},{\"queryRef\":\"Sum(database_wait_stats.wait_per_request)\"},{\"queryRef\":\"_Metrics.Records\"},{\"queryRef\":\"_Metrics.Distinct_captures\"},{\"queryRef\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)\"},{\"queryRef\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"wait_stats\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0}],\"Select\":[{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"Scope\":[]}},\"Operator\":3},\"Name\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)\"},{\"Arithmetic\":{\"Left\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Records (waits)\"}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Records (waits)\"}},\"Scope\":[]}},\"Operator\":3},\"Name\":\"_Metrics.Records\"},{\"Arithmetic\":{\"Left\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_captures (waits)\"}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_captures (waits)\"}},\"Scope\":[]}},\"Operator\":3},\"Name\":\"_Metrics.Distinct_captures\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_s\"},\"Name\":\"database_wait_stats.wait_type_s\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_per_request\"}},\"Function\":0},\"Name\":\"Sum(database_wait_stats.wait_per_request)\"},{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Scope\":[]}},\"Operator\":3},\"Name\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"total\":[{\"properties\":{\"totals\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"columnFormatting\":[{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"1L\"}}}},\"selector\":{\"metadata\":\"_Metrics.Records\"}},{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"1L\"}}}},\"selector\":{\"metadata\":\"_Metrics.Distinct_captures\"}},{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"1L\"}}}},\"selector\":{\"metadata\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)\"}},{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"1L\"}}}},\"selector\":{\"metadata\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"}},{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}},\"selector\":{\"metadata\":\"Sum(database_wait_stats.wait_per_request)\"}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"_Metrics\"}},\"Property\":\"Records (waits)\"}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"_Metrics\"}},\"Property\":\"Distinct_captures (waits)\"}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 231.14,
+          "width": 608.41,
+          "x": 665.09,
+          "y": 74.39,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"447d9d8c7fb6623e8fd9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":665.2369077306732,\"y\":8.079800498753118,\"z\":6000,\"width\":608.6783042394014,\"height\":58.35411471321696,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"_Metrics.Distinct_wait_type_categories\"},{\"queryRef\":\"_Metrics.Distinct_wait_types\"},{\"queryRef\":\"_Metrics.Distinct_captures\"},{\"queryRef\":\"_Metrics.Records\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Metrics\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Records (waits)\"},\"Name\":\"_Metrics.Records\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_wait_types (waits)\"},\"Name\":\"_Metrics.Distinct_wait_types\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_captures (waits)\"},\"Name\":\"_Metrics.Distinct_captures\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_wait_type_categories (waits)\"},\"Name\":\"_Metrics.Distinct_wait_type_categories\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Distinct_wait_type_categories (waits)\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 58.35,
+          "width": 608.68,
+          "x": 665.24,
+          "y": 8.08,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"49e0129a37a04a279c22\",\"layouts\":[{\"id\":0,\"position\":{\"x\":38.96678966789668,\"y\":74.39114391143912,\"z\":5000,\"width\":292.2509225092251,\"height\":231.1439114391144,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"AttributeSlicer1652434005853\",\"projections\":{\"Values\":[{\"queryRef\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)1\"}],\"Category\":[{\"queryRef\":\"database_wait_stats.wait_type_category_s\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"wait_stats\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0},\"Name\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)1\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"wait_type_category_s\"},\"Name\":\"database_wait_stats.wait_type_category_s\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"w\",\"Entity\":\"wait_stats\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"w\"}},\"Property\":\"wait_type_category_s\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'PAGELATCH'\"}}],[{\"Literal\":{\"Value\":\"'MEMORY'\"}}],[{\"Literal\":{\"Value\":\"'CXPACKET'\"}}],[{\"Literal\":{\"Value\":\"'CXCONSUMER'\"}}],[{\"Literal\":{\"Value\":\"'WRITELOG'\"}}],[{\"Literal\":{\"Value\":\"'LATCH'\"}}],[{\"Literal\":{\"Value\":\"'SOS'\"}}]]}}}]}}}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 231.14,
+          "width": 292.25,
+          "x": 38.97,
+          "y": 74.39,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"507f20e357a1f428cbaa\",\"layouts\":[{\"id\":0,\"position\":{\"x\":665,\"y\":360,\"z\":7000,\"width\":609,\"height\":360,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Columns\":[{\"queryRef\":\"Fecha.date\",\"active\":true}],\"Values\":[{\"queryRef\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"}],\"Rows\":[{\"queryRef\":\"database_wait_stats.wait_type_category_s\",\"active\":true},{\"queryRef\":\"database_wait_stats.wait_type_s\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"wait_stats\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fecha\",\"Type\":0}],\"Select\":[{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Scope\":[{\"RoleRef\":{\"Role\":\"Columns\"}}]}},\"Operator\":3},\"Name\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_category_s\"},\"Name\":\"database_wait_stats.wait_type_category_s\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_s\"},\"Name\":\"database_wait_stats.wait_type_s\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"},\"Name\":\"Fecha.date\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"database_wait_stats.wait_type_category_s\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_type_category_s\"}}],\"isPinned\":true},{\"queryRefs\":[\"database_wait_stats.wait_type_s\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null}}],\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"columnFormatting\":[{\"properties\":{\"labelPrecision\":{\"expr\":{\"Literal\":{\"Value\":\"1L\"}}}},\"selector\":{\"metadata\":\"Sum(database_wait_stats.delta_wait_time_ms_d)\"}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Scope\":[]}},\"Operator\":3}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 360.00,
+          "width": 609.00,
+          "x": 665.00,
+          "y": 360.00,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"c19db2eb3eb1a110aca3\",\"layouts\":[{\"id\":0,\"position\":{\"x\":39,\"y\":360,\"z\":1000,\"width\":617,\"height\":360,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"Fecha.date\",\"active\":true}],\"Columns\":[{\"queryRef\":\"database_wait_stats.wait_type_category_s\",\"active\":true}],\"Values\":[{\"queryRef\":\"Sum(database_wait_stats.wait_per_request)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fecha\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"wait_stats\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_per_request\"}},\"Function\":1},\"Name\":\"Sum(database_wait_stats.wait_per_request)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"wait_type_category_s\"},\"Name\":\"database_wait_stats.wait_type_category_s\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"date\"},\"Name\":\"Fecha.date\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"Fecha.date\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fecha\"}},\"Property\":\"date\"}}],\"isPinned\":true}],\"root\":{\"identityValues\":null}}],\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"values\":[{\"properties\":{\"backColor\":{\"solid\":{\"color\":{\"expr\":{\"FillRule\":{\"Input\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_per_request\"}},\"Function\":1}},\"FillRule\":{\"linearGradient2\":{\"min\":{\"color\":{\"Literal\":{\"Value\":\"'#FFFFFF'\"}}},\"max\":{\"color\":{\"Literal\":{\"Value\":\"'#D03030'\"}}},\"nullColoringStrategy\":{\"strategy\":{\"Literal\":{\"Value\":\"'asZero'\"}}}}}}}}}}},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}],\"metadata\":\"Sum(database_wait_stats.wait_per_request)\"}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[{\"expression\":{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Scope\":[{\"RoleRef\":{\"Role\":\"Columns\"}}]}},\"Operator\":3}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Arithmetic\":{\"Left\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Right\":{\"ScopedEval\":{\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}},\"Scope\":[]}},\"Operator\":3}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false},{\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"wait_stats\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":1,\"isHiddenInViewMode\":false}]",
+          "height": 360.00,
+          "width": 617.00,
+          "x": 39.00,
+          "y": 360.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"de9127ce7f65c18eb598\",\"layouts\":[{\"id\":0,\"position\":{\"x\":38.603491271820445,\"y\":314.214463840399,\"z\":0,\"width\":617.6558603491271,\"height\":40.399002493765586,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Avg. wait per request day / wait type category\",\"textStyle\":{\"fontSize\":\"12pt\",\"color\":\"#ffffff\"}}]}]}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#3A58A4'\"}}}}}}}]}}}",
+          "filters": "[]",
+          "height": 40.40,
+          "width": 617.66,
+          "x": 38.60,
+          "y": 314.21,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"e25e0faf9c260262ada5\",\"layouts\":[{\"id\":0,\"position\":{\"x\":340.0738007380074,\"y\":74.39114391143912,\"z\":2000,\"width\":316.1623616236162,\"height\":231.1439114391144,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"donutChart\",\"projections\":{\"Category\":[{\"queryRef\":\"database_wait_stats.wait_type_category_s1\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(database_wait_stats.delta_wait_time_ms_d)1\"}],\"Tooltips\":[{\"queryRef\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)1\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d1\",\"Entity\":\"wait_stats\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"wait_type_category_s\"},\"Name\":\"database_wait_stats.wait_type_category_s1\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0},\"Name\":\"Sum(database_wait_stats.delta_wait_time_ms_d)1\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"waiting_tasks_count_d\"}},\"Function\":0},\"Name\":\"Sum(database_wait_stats.delta_waiting_tasks_count_d)1\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"wait_time_ms_d\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 231.14,
+          "width": 316.16,
+          "x": 340.07,
+          "y": 74.39,
+          "z": 2000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ],
+  "theme": "Verne-blanco2197775527899315.json"
+}

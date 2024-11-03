@@ -1,0 +1,109 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 173.56662597656214,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 545.09999999999991,
+            "y": 411
+          },
+          "nodeIndex": "Fecha",
+          "size": {
+            "height": 478,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1026.8,
+            "y": 506
+          },
+          "nodeIndex": "Hora",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 173.56662597656214,
+            "y": 353
+          },
+          "nodeIndex": "_Metrics",
+          "size": {
+            "height": 334,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 493,
+            "y": 0
+          },
+          "nodeIndex": "file_stats",
+          "nodeLineageTag": "252d7146-98dd-4d64-9e22-35911c36b6e3",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1543.2332519531246,
+            "y": 0
+          },
+          "nodeIndex": "wait_stats",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1374.6666259765625,
+            "y": 529.5
+          },
+          "nodeIndex": "databases",
+          "nodeLineageTag": "e978aa84-469a-4d66-aee4-cdb47f4f4f24",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1764.1000000000004,
+            "y": 392.5
+          },
+          "nodeIndex": "servers",
+          "nodeLineageTag": "d9f5cb96-c985-4aa1-8d86-cc0cc2fdcaf7",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

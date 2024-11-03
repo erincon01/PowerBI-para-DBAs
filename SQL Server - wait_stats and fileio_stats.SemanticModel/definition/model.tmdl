@@ -1,0 +1,27 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-ES
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Path","DelimitadorTab","Fecha","Hora","_Metrics","Funcion-Fecha","wait_stats","file_stats","databases","servers"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.137.952.0 (24.10)
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fecha
+ref table Hora
+ref table _Metrics
+ref table wait_stats
+ref table file_stats
+ref table databases
+ref table servers
+
+ref cultureInfo en-US
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "SQL Server - wait_stats and fileio_stats"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "07ed3bdc-b0d6-4c1f-b8f4-8785b5b036c7"
+  }
+}

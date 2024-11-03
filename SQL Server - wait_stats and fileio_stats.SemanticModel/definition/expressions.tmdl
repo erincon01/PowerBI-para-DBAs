@@ -1,0 +1,50 @@
+expression Funcion-Fecha = ```
+		(StartDate as date, EndDate as date) => 
+		let
+		    firstDayofWeek=Day.Monday, // set the week's start day, values: Day.Monday, Day.Sunday....
+		    // configuration end
+		    FromDate=StartDate,
+		    ToDate=EndDate,
+		    Source=List.Dates(
+		        FromDate,
+		        Duration.Days(ToDate-FromDate)+1,
+		        #duration(1,0,0,0)
+		    ),
+		    #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+		    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Date"}}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Date", type date}}),
+		    #"Inserted Year" = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Date]), Int64.Type),
+		    #"Inserted Month" = Table.AddColumn(#"Inserted Year", "Month", each Date.Month([Date]), Int64.Type),
+		    #"Inserted Day" = Table.AddColumn(#"Inserted Month", "Day", each Date.Day([Date]), Int64.Type),
+		    #"Inserted Day Name" = Table.AddColumn(#"Inserted Day", "Day Name", each Date.DayOfWeekName([Date], "en-en"), type text),
+		    #"Inserted Day of Week" = Table.AddColumn(#"Inserted Day Name", "Day of Week", each Date.DayOfWeek([Date],firstDayofWeek), Int64.Type),
+		    #"Inserted Day of Year" = Table.AddColumn(#"Inserted Day of Week", "Day of Year", each Date.DayOfYear([Date]), Int64.Type),
+		    #"Inserted Month Name" = Table.AddColumn(#"Inserted Day of Year", "Month Name", each Date.MonthName([Date], "en-en"), type text),
+		    #"Inserted Quarter" = Table.AddColumn(#"Inserted Month Name", "Quarter", each "Q" & Number.ToText(Date.QuarterOfYear([Date]))),
+		    #"Inserted Week of Year" = Table.AddColumn(#"Inserted Quarter", "Week of Year", each Date.WeekOfYear([Date],firstDayofWeek), Int64.Type),
+		    #"Inserted Week of Month" = Table.AddColumn(#"Inserted Week of Year", "Week of Month", each Date.WeekOfMonth([Date],firstDayofWeek), Int64.Type),
+		    #"Inserted Start of Week" = Table.AddColumn(#"Inserted Week of Month", "Start of Week", each Date.StartOfWeek([Date],firstDayofWeek), type date),
+		    #"Inserted End of Week" = Table.AddColumn(#"Inserted Start of Week", "End of Week", each Date.EndOfWeek([Date],firstDayofWeek), type date),
+		    #"Inserted Year-Month" = Table.AddColumn(#"Inserted End of Week", "Year-Month", each Date.ToText([Date],"yyyy-MM")),
+		    #"Renamed Columns5" = Table.RenameColumns(#"Inserted Year-Month",{{"Date", "fecha"}}),
+		    #"Added Custom6" = Table.AddColumn(#"Renamed Columns5", "Working-day", each if List.ContainsAny({[Day of Week]},{5,6}) then 1 else 0, Int64.Type)
+		in
+		    #"Added Custom6"
+		```
+	lineageTag: 792ff1b2-881a-4a1d-acb9-b5fe7c9943a5
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression DelimitadorTab = true meta [IsParameterQuery=true, Type="Logical", IsParameterQueryRequired=false]
+	lineageTag: c110d91f-d384-4844-a085-6a171045ec9b
+
+	annotation PBI_ResultType = Logical
+
+/// File path
+expression Path = "C:\Users\erincon\Sources\_personal\PowerBI-para-DBAs\data\sample_" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 6fb82f27-dde6-4443-9571-3356926e96f1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

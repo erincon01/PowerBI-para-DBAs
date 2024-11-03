@@ -1,0 +1,223 @@
+table Hora
+	lineageTag: 5ade06fb-a119-4c43-9f57-d569648f5a07
+
+	column time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 4ddbc3e6-87f4-419c-a663-405306d8ab82
+		summarizeBy: none
+		sourceColumn: time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 4441f8de-5afc-4abd-82a7-bc886e90655b
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	column Horas
+		dataType: int64
+		formatString: 0
+		lineageTag: f3eab7c0-36a1-47ab-bc42-ce628349fd17
+		summarizeBy: sum
+		sourceColumn: Horas
+
+		annotation SummarizationSetBy = Automatic
+
+	column Minutos
+		dataType: int64
+		formatString: 0
+		lineageTag: 28e8ab0a-53f8-443d-b955-fc120ea02a18
+		summarizeBy: sum
+		sourceColumn: Minutos
+
+		annotation SummarizationSetBy = Automatic
+
+	column '5 Minutos'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 4e73c9c7-d457-477e-a033-bd4bd7626114
+		summarizeBy: none
+		sourceColumn: 5 Minutos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column '10 Minutos'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: eaff453b-01f9-491e-9229-090212b79d46
+		summarizeBy: none
+		sourceColumn: 10 Minutos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column '15 Minutos'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: b8181463-f64f-4285-be45-c66b442541a1
+		summarizeBy: none
+		sourceColumn: 15 Minutos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column '30 Minutos'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 9846abf4-f899-4c13-ad5d-3ed8ba86b47a
+		summarizeBy: none
+		sourceColumn: 30 Minutos
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column '1 Hora'
+		dataType: dateTime
+		formatString: hh:nn
+		lineageTag: 0a0ac1a0-8cc4-4430-96de-bff3c4e81d01
+		summarizeBy: none
+		sourceColumn: 1 Hora
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column '5 Minutos Intervalo'
+		dataType: string
+		lineageTag: a1108b4a-cd19-4243-9f94-19623193f5f5
+		summarizeBy: none
+		sourceColumn: 5 Minutos Intervalo
+
+		annotation SummarizationSetBy = Automatic
+
+	column '10 Minutos Intervalo'
+		dataType: string
+		lineageTag: 348cb052-2138-47e3-86fe-235f99df733c
+		summarizeBy: none
+		sourceColumn: 10 Minutos Intervalo
+
+		annotation SummarizationSetBy = Automatic
+
+	column '15 Minutos Intervalo'
+		dataType: string
+		lineageTag: cb8a741f-15ec-4145-a419-95a6d3748f62
+		summarizeBy: none
+		sourceColumn: 15 Minutos Intervalo
+
+		annotation SummarizationSetBy = Automatic
+
+	column '30 Minutos Intervalo'
+		dataType: string
+		lineageTag: 0bf7c7a5-d684-43db-b348-a761597ac1e0
+		summarizeBy: none
+		sourceColumn: 30 Minutos Intervalo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ' Minutos Intervalo'
+		dataType: string
+		lineageTag: 028db844-cefd-47e1-a6d1-813effdfe9ef
+		summarizeBy: none
+		sourceColumn: " Minutos Intervalo"
+
+		annotation SummarizationSetBy = Automatic
+
+	column ' Periodo'
+		dataType: string
+		lineageTag: 4b56e0b9-976c-4f35-87fc-65d3a9aeb9fa
+		summarizeBy: none
+		sourceColumn: " Periodo"
+
+		annotation SummarizationSetBy = Automatic
+
+	column PeriodoKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 91fcc599-f4ae-44bc-b054-91d100a98fa0
+		summarizeBy: count
+		sourceColumn: PeriodoKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Hora-229badcd-05bc-444f-b6d5-e7195c1dd930 = m
+		mode: import
+		source = ```
+				let
+				       /**********************************************************
+				        * 
+				        * Author: Michal Dvorak WITH(NOLOCK)
+				        * Since: 02.08.2019
+				        * Twitter: @nolockcz
+				        *
+				        * Source code: https://github.com/nolockcz/PowerQuery
+				        *
+				        *********************************************************/    
+				
+				    /***** Table with one minute column *****/
+				    NumberOfMinutes = 24 * 60,
+				    ListOfMinutes = List.Times(#time(0, 0, 0), NumberOfMinutes, #duration(0, 0, 1, 0)),
+				    MinutesAsTable = Table.FromList(ListOfMinutes, Splitter.SplitByNothing(), {"Time"}, null, ExtraValues.Error),
+				    MinuteColumnAsTime = Table.TransformColumnTypes(MinutesAsTable,{{"Time", type time}}),
+				
+				    /***** Index column *****/
+				    Index = Table.AddColumn(MinuteColumnAsTime, "Index", each Time.Hour([Time]) * 100 + Time.Minute([Time]), Int32.Type),
+				
+				    /***** Hour and minute *****/
+				    Hour = Table.AddColumn(Index, "Hour", each Time.Hour([Time]), Int32.Type),
+				    Minute = Table.AddColumn(Hour, "Minute", each Time.Minute([Time]), Int32.Type),
+				
+				    /***** Round down minutes by interval value *****/
+				    fnTimeRoundDown = (currentTime as time, interval as number) as time => 
+				        let
+				            currentHour = Time.Hour(currentTime),
+				            currentMinute = Time.Minute(currentTime),
+				            result = #time(currentHour, currentMinute - Number.Mod(currentMinute, interval), 0)
+				        in
+				            result,
+				
+				    FiveMinutes = Table.AddColumn(Minute, "FiveMinutes", each fnTimeRoundDown([Time], 5), type time),
+				    TenMinutes = Table.AddColumn(FiveMinutes, "TenMinutes", each fnTimeRoundDown([Time], 10), type time),
+				    FifteenMinutes = Table.AddColumn(TenMinutes, "FifteenMinutes", each fnTimeRoundDown([Time], 15), type time),
+				    ThirtyMinutes = Table.AddColumn(FifteenMinutes, "ThirtyMinutes", each fnTimeRoundDown([Time], 30), type time),
+				    OneHour = Table.AddColumn(ThirtyMinutes, "OneHour", each fnTimeRoundDown([Time], 60), type time),
+				
+				    /***** Generates a text from a time interval *****/
+				    fnTimeToText = (currentTime as time, countOfMinutes as number) as text =>
+				        let 
+				            from = currentTime,
+				            to = currentTime + #duration(0, 0, countOfMinutes, 0),
+				            result = Time.ToText(from) & " - " & Time.ToText(to)
+				        in
+				            result,
+				
+				    FiveMinutesText = Table.AddColumn(OneHour, "FiveMinutesInterval", each fnTimeToText([FiveMinutes], 5), type text),
+				    TenMinutesText = Table.AddColumn(FiveMinutesText, "TenMinutesInterval", each fnTimeToText([TenMinutes], 10), type text),
+				    FifteenMinutesText = Table.AddColumn(TenMinutesText, "FifteenMinutesInterval", each fnTimeToText([FifteenMinutes], 15), type text),
+				    ThirtyMinutesText = Table.AddColumn(FifteenMinutesText, "ThirtyMinutesInterval", each fnTimeToText([ThirtyMinutes], 30), type text),
+				    OneHourText = Table.AddColumn(ThirtyMinutesText, "OneHourInterval", each fnTimeToText([OneHour], 60), type text),
+				
+				    Periodo = Table.AddColumn(OneHourText, "Periodo", each if [Time] < #time(8, 0, 0) then "12:00 AM - 07:59 AM - Madrugada" else if [Time] < #time(14, 0, 0) then "08:00 AM - 01:59 PM - Mañana" else if [Time] < #time(18, 0, 0) then "02:00 PM - 05:59 PM - Tarde" else "06:00 PM - 11:59 PM - Noche", type text),
+				    PeriodoKey = Table.AddColumn(Periodo, "PeriodoKey", each if [Time] < #time(8, 0, 0) then 0 else if [Time] < #time(14, 0, 0) then 1 else if [Time] < #time(18, 0, 0) then 2 else 3, Int64.Type),
+				    
+				    /***** Translation of columns to Spanish *****/
+				    ColumnTranslation = Table.RenameColumns(PeriodoKey,{{"Time", "time"}, {"Hour", "Horas"}, {"Minute", "Minutos"}, {"FiveMinutes", "5 Minutos"}, {"TenMinutes", "10 Minutos"}, {"FifteenMinutes", "15 Minutos"}, {"ThirtyMinutes", "30 Minutos"}, {"OneHour", "1 Hora"}, {"FiveMinutesInterval", "5 Minutos Intervalo"}, {"TenMinutesInterval", "10 Minutos Intervalo"}, {"FifteenMinutesInterval", "15 Minutos Intervalo"}, {"ThirtyMinutesInterval", "30 Minutos Intervalo"}, {"OneHourInterval", " Minutos Intervalo"}, {"Periodo", " Periodo"}})
+				in
+				    ColumnTranslation
+				```
+
+	annotation PBI_ResultType = Table
+

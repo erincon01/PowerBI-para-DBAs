@@ -1,0 +1,119 @@
+table wait_stats
+	lineageTag: fed88f25-6c43-4500-97ca-0619392d6856
+
+	column Date
+		dataType: dateTime
+		formatString: dd/mm/yy
+		lineageTag: 924f495f-b0a3-456f-817e-4f6f0fc85824
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Time
+		dataType: dateTime
+		formatString: hh:nn
+		lineageTag: 92d8f577-b8e6-440b-bab4-e00044919e94
+		summarizeBy: none
+		sourceColumn: Time
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column wait_type_category_s
+		dataType: string
+		lineageTag: 2ea3eb00-8e99-4371-b5a9-a231a845d7a2
+		summarizeBy: none
+		sourceColumn: wait_type_category_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column wait_per_request
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 870dcc1f-c95c-4933-91a2-e75c8d1b530d
+		summarizeBy: sum
+		sourceColumn: wait_per_request
+
+		annotation SummarizationSetBy = Automatic
+
+	column TimeGenerated
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5c5017a9-c021-42ad-ac9c-c6166f8f238f
+		summarizeBy: none
+		sourceColumn: TimeGenerated
+
+		annotation SummarizationSetBy = Automatic
+
+	column LogicalServerName_s
+		dataType: string
+		lineageTag: 705010b3-27a5-452c-9437-c19504756247
+		summarizeBy: none
+		sourceColumn: LogicalServerName_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column wait_type_s
+		dataType: string
+		lineageTag: 750b3bf0-f968-431f-9721-64b9c7c1d9fc
+		summarizeBy: none
+		sourceColumn: wait_type_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column wait_time_ms_d
+		dataType: int64
+		formatString: #,0
+		lineageTag: d1bad9f9-463c-4b3a-bb36-d13990b0fbb2
+		summarizeBy: sum
+		sourceColumn: wait_time_ms_d
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column waiting_tasks_count_d
+		dataType: int64
+		formatString: 0
+		lineageTag: 85de2f77-6322-4926-9d6c-cb45e8ec6243
+		summarizeBy: sum
+		sourceColumn: waiting_tasks_count_d
+
+		annotation SummarizationSetBy = Automatic
+
+	partition wait_stats-6f1231dd-9e2c-4cfe-8562-d48fb1d93722 = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Path & "waitstats.csv"),[Delimiter=if DelimitadorTab = true then "	" else ",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Promoted Headers",{{"TimeGenerated", type datetime}, {"delta_wait_time_ms_d", Int64.Type}, {"delta_waiting_tasks_count_d", Int64.Type}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Changed Type3", "TimeGenerated", "Date"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Duplicated Column",{{"Date", type date}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Time", each Text.From(Time.Hour([TimeGenerated])) & ":" & Text.From(Time.Minute([TimeGenerated])) & ":00"),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"Time", type time}, {"delta_wait_time_ms_d", Int64.Type}, {"delta_waiting_tasks_count_d", Int64.Type}}),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Changed Type1", "wait_type_s", "wait_type_s - Copy"),
+				    #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Duplicated Column1", {{"wait_type_s - Copy", each Text.BeforeDelimiter(_, "_"), type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Extracted Text Before Delimiter",{{"wait_type_s - Copy", "wait_type_category_s"}}),
+				    #"Added Custom1" = Table.AddColumn(#"Renamed Columns", "wait_per_request", each [delta_wait_time_ms_d]* 1.00 / [delta_waiting_tasks_count_d]),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom1",{{"wait_per_request", type number}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type2",{{"delta_wait_time_ms_d", "wait_time_ms_d"}, {"delta_waiting_tasks_count_d", "waiting_tasks_count_d"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

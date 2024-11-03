@@ -1,0 +1,212 @@
+table file_stats
+	lineageTag: 252d7146-98dd-4d64-9e22-35911c36b6e3
+
+	column TimeGenerated
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e37e5a31-d21d-4f80-9032-c4ae32237b2a
+		summarizeBy: none
+		sourceColumn: TimeGenerated
+
+		annotation SummarizationSetBy = Automatic
+
+	column LogicalServerName_s
+		dataType: string
+		lineageTag: fa73d743-9ba1-4567-addd-fcccace895eb
+		summarizeBy: none
+		sourceColumn: LogicalServerName_s
+
+		annotation SummarizationSetBy = Automatic
+
+	column database_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3f2219da-fa6c-4571-8805-683f05cc0873
+		summarizeBy: none
+		sourceColumn: database_id
+
+		annotation SummarizationSetBy = User
+
+	column file_id
+		dataType: int64
+		formatString: 0
+		lineageTag: a19626d1-2459-4f4c-98db-f2291ce223ac
+		summarizeBy: none
+		sourceColumn: file_id
+
+		annotation SummarizationSetBy = User
+
+	column num_of_bytes_read
+		dataType: int64
+		formatString: #,0
+		lineageTag: 8a5963c4-d329-4664-b89a-337138096576
+		summarizeBy: sum
+		sourceColumn: num_of_bytes_read
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_of_bytes_written
+		dataType: int64
+		formatString: #,0
+		lineageTag: 778c5d24-6a1c-4a6a-b30a-cf61f314718b
+		summarizeBy: sum
+		sourceColumn: num_of_bytes_written
+
+		annotation SummarizationSetBy = Automatic
+
+	column database_name
+		dataType: string
+		lineageTag: af0edd7e-3294-481d-984f-d3557232c49f
+		summarizeBy: none
+		sourceColumn: database_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 30f5471a-ad4b-4d6e-abb9-5ba18b64d579
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column filename
+		dataType: string
+		lineageTag: 440e4610-cdc3-43c5-9e48-d73d9bcad9f2
+		summarizeBy: none
+		sourceColumn: filename
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: dd/mm/yy
+		lineageTag: f4c0544e-77c7-494f-83c7-61b1df6403e5
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column Time
+		dataType: dateTime
+		formatString: hh:nn:ss
+		lineageTag: 80e73e93-f8a3-4d82-b80d-c89e9672b3cf
+		summarizeBy: none
+		sourceColumn: Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column num_of_reads
+		dataType: int64
+		formatString: #,0
+		lineageTag: c57dd423-4e57-4182-a409-8510f1c279ff
+		summarizeBy: sum
+		sourceColumn: num_of_reads
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_of_writes
+		dataType: int64
+		formatString: #,0
+		lineageTag: b8f39b22-52e2-4d27-bc7a-48147d702e45
+		summarizeBy: sum
+		sourceColumn: num_of_writes
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_gb_read
+		dataType: double
+		formatString: #,0.00
+		lineageTag: cac4899d-a2df-43e0-b82f-be1816f02777
+		summarizeBy: sum
+		sourceColumn: num_gb_read
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_gb_written
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 0feed5ef-0f19-4b25-929a-7d27f1344702
+		summarizeBy: sum
+		sourceColumn: num_gb_written
+
+		annotation SummarizationSetBy = Automatic
+
+	column io_stall_read_ms_per_request
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 13ba4fe0-97cb-4389-94c6-7acb21117370
+		summarizeBy: none
+		sourceColumn: io_stall_read_ms_per_request
+
+		annotation SummarizationSetBy = User
+
+	column io_stall_write_ms_per_request
+		dataType: double
+		formatString: #,0.00
+		lineageTag: a2c5babe-d0a5-48b5-95d4-f15f17f58c8a
+		summarizeBy: none
+		sourceColumn: io_stall_write_ms_per_request
+
+		annotation SummarizationSetBy = User
+
+	column num_operations
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6bdb14c8-7aa4-4b06-ab49-27df1b83a140
+		summarizeBy: sum
+		sourceColumn: num_operations
+
+		annotation SummarizationSetBy = Automatic
+
+	column io_stall_ms_per_request
+		dataType: double
+		lineageTag: b99e769e-602e-47f8-bfa9-0d419ff9ffd3
+		summarizeBy: sum
+		sourceColumn: io_stall_ms_per_request
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition file_stats-9df366a9-3c62-4e1e-b1b4-33f1b1c1111b = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Path & "fileiostats.csv"),[Delimiter=if DelimitadorTab = true then "	" else ",", Columns=16, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Promoted Headers",{{"TimeGenerated", type datetime}, {"database_id", Int64.Type}, {"file_id", Int64.Type}, {"num_of_reads", Int64.Type}, {"num_of_writes", Int64.Type}, {"num_of_bytes_read", Int64.Type}, {"num_of_bytes_written", Int64.Type}, {"io_stall_read_ms", Int64.Type}, {"io_stall_write_ms", Int64.Type}, {"io_stall_ms", Int64.Type}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type3",".",",",Replacer.ReplaceText,{"reads_per_second"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",".",",",Replacer.ReplaceText,{"writes_per_second"}),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Replaced Value1",{{"num_of_reads", Int64.Type}, {"num_of_writes", Int64.Type}, {"num_of_bytes_read", Int64.Type}, {"num_of_bytes_written", Int64.Type}, {"io_stall_read_ms", Int64.Type}, {"io_stall_write_ms", Int64.Type}, {"io_stall_ms", Int64.Type}, {"reads_per_second", type number}, {"writes_per_second", type number}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Changed Type4", "TimeGenerated", "Date"),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Duplicated Column",{{"Date", type date}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Time", each Text.From(Time.Hour([TimeGenerated])) & ":" & Text.From(Time.Minute([TimeGenerated])) & ":00"),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"Time", type time}}),
+				    #"Added Custom1" = Table.AddColumn(#"Changed Type1", "operations_per_second", each [reads_per_second] + [writes_per_second]),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom1",{{"operations_per_second", type number}}),
+				    #"Inserted Sum" = Table.AddColumn(#"Changed Type2", "num_operations", each List.Sum({[num_of_reads], [num_of_writes]}), Int64.Type),
+				    #"Inserted Division" = Table.AddColumn(#"Inserted Sum", "Division", each [num_of_bytes_read] / 1073741824, type number),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Division",{{"Division", "num_gb_read"}}),
+				    #"Inserted Division1" = Table.AddColumn(#"Renamed Columns", "Division", each [num_of_bytes_written] / 1073741824, type number),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Inserted Division1",{{"Division", "num_gb_written"}}),
+				    #"Added Custom2" = Table.AddColumn(#"Renamed Columns1", "io_stall_read_ms_per_request", each if [num_of_reads] = 0 then 0 else [io_stall_read_ms] / [num_of_reads]),
+				    #"Added Custom3" = Table.AddColumn(#"Added Custom2", "io_stall_write_ms_per_request", each if [num_of_writes] = 0 then 0 else [io_stall_write_ms] / [num_of_writes]),
+				    #"Added Custom4" = Table.AddColumn(#"Added Custom3", "io_stall_ms_per_request", each if [num_operations] = 0 then 0 else [io_stall_ms] / [num_operations]),
+				    #"Changed Type5" = Table.TransformColumnTypes(#"Added Custom4",{{"io_stall_read_ms_per_request", type number}, {"io_stall_write_ms_per_request", type number}, {"io_stall_ms_per_request", type number}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type5",{"io_stall_read_ms", "io_stall_write_ms", "io_stall_ms", "operations_per_second", "reads_per_second", "writes_per_second"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

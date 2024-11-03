@@ -1,0 +1,73 @@
+table _Metrics
+	lineageTag: 720edba5-1c9d-42af-a6dd-871337ac3619
+
+	measure 'Records (waits)' = COUNTROWS(wait_stats)
+		formatString: 0
+		displayFolder: wait_types
+		lineageTag: d44ea1c0-ce64-4f12-9e1e-fd1d3ab1b5cf
+
+	measure 'Distinct_wait_types (waits)' = DISTINCTCOUNT(wait_stats[wait_type_s])
+		formatString: 0
+		displayFolder: wait_types
+		lineageTag: 127ca850-13bb-4f40-9470-1fcae2ecbac0
+
+	measure 'Distinct_captures (waits)' = DISTINCTCOUNT(wait_stats[TimeGenerated])
+		formatString: 0
+		displayFolder: wait_types
+		lineageTag: 05d74476-33e2-4bcc-b6e3-097486bd0470
+
+	measure 'Distinct_wait_type_categories (waits)' = DISTINCTCOUNT(wait_stats[wait_type_category_s])
+		formatString: 0
+		displayFolder: wait_types
+		lineageTag: d661799a-ca81-4047-9d84-1d8617a0f604
+
+	measure 'avg io_stall_reads_ms_per_request' = AVERAGE(file_stats[io_stall_read_ms_per_request])
+		displayFolder: file_stats
+		lineageTag: 197ffe1d-5d7a-419f-8ea3-678bf6a9b17d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'avg io_stall_write_ms_per_request' = AVERAGE(file_stats[io_stall_write_ms_per_request])
+		displayFolder: file_stats
+		lineageTag: cb5b25bf-6234-4ad4-ad1d-edcaaf5dd812
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'avg io_stall_ms_per_request' = AVERAGE(file_stats[io_stall_ms_per_request])
+		displayFolder: file_stats
+		lineageTag: c0b053d7-11d2-48d7-83d0-8b9f3e1686c6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Count databases' = DISTINCTCOUNT(databases[database_name])
+		formatString: 0
+		displayFolder: general
+		lineageTag: 947aa376-01c9-4a23-a5f9-33b748cbf8b2
+
+	measure 'Count servers' = DISTINCTCOUNT(servers[LogicalServerName_s])
+		formatString: 0
+		displayFolder: general
+		lineageTag: c93a7d22-d0bc-467f-8630-cef61a8fdc7c
+
+	measure 'Count file_stats records' = count(file_stats[database_id])
+		formatString: 0
+		displayFolder: general
+		lineageTag: a237e0a2-e39a-42f8-8d72-741210359370
+
+	measure 'Count wait_stats_records records' = count(wait_stats[LogicalServerName_s])
+		formatString: 0
+		displayFolder: general
+		lineageTag: 7bb1d28b-bd30-41cb-b0f6-007308c3e700
+
+	partition _Metrics-62335c55-f406-41be-bf52-c82fddb50c63 = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

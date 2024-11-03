@@ -1,0 +1,27 @@
+table servers
+	lineageTag: d9f5cb96-c985-4aa1-8d86-cc0cc2fdcaf7
+
+	column LogicalServerName_s
+		dataType: string
+		lineageTag: 1784bfdf-a7ee-40b0-925a-3bcb455b324f
+		summarizeBy: none
+		sourceColumn: LogicalServerName_s
+
+		annotation SummarizationSetBy = Automatic
+
+	partition servers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(Path & "fileiostats.csv"),[Delimiter=if DelimitadorTab = true then "	" else ",", Columns=16, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Promoted Headers",{{"TimeGenerated", type datetime}, {"database_id", Int64.Type}, {"file_id", Int64.Type}, {"num_of_reads", Int64.Type}, {"num_of_writes", Int64.Type}, {"num_of_bytes_read", Int64.Type}, {"num_of_bytes_written", Int64.Type}, {"io_stall_read_ms", Int64.Type}, {"io_stall_write_ms", Int64.Type}, {"io_stall_ms", Int64.Type}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type3",{"LogicalServerName_s"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns")
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

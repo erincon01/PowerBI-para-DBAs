@@ -1,0 +1,33 @@
+relationship c2d8a056-32a2-4195-b248-30e163e0b861
+	fromColumn: wait_stats.Time
+	toColumn: Hora.time
+
+relationship 8b623c0e-d79d-4829-b4d4-c445a02d5ff8
+	fromColumn: wait_stats.Date
+	toColumn: Fecha.date
+
+relationship 0bc58771-d351-4af1-abb4-ff598bba09e7
+	fromColumn: file_stats.Date
+	toColumn: Fecha.date
+
+relationship ff67be3a-b083-444f-af29-9c0ec6da4c68
+	fromColumn: file_stats.Time
+	toColumn: Hora.time
+
+relationship AutoDetected_aa7124f7-193c-4355-809a-e09bc0246f38
+	fromColumn: file_stats.database_name
+	toColumn: databases.database_name
+
+relationship AutoDetected_51babf14-fb88-4c58-998c-398de1ec6fa7
+	fromColumn: wait_stats.LogicalServerName_s
+	toColumn: servers.LogicalServerName_s
+
+relationship AutoDetected_52cfe768-6d69-4f3b-9ce1-331f79541661
+	fromColumn: file_stats.LogicalServerName_s
+	toColumn: servers.LogicalServerName_s
+
+relationship AutoDetected_12afbbf2-9257-490b-9b46-5d78600d57f2
+	isActive: false
+	fromColumn: databases.LogicalServerName_s
+	toColumn: servers.LogicalServerName_s
+
